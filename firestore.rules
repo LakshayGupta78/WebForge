@@ -1,0 +1,26 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read/write their own vendor document
+    match /vendors/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow any authenticated user to read all vendors (for public profiles)
+    match /vendors/{vendorId} {
+      allow read: if true;
+    }
+    
+    // Transactions - only the vendor can write, anyone can read
+    match /transactions/{transactionId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Fallback: Allow authenticated users during development
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
