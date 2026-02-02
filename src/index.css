@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Custom Theme Variables */
+:root {
+  --color-cream: #FFFBF5;
+  --color-surface: #FFFFFF;
+  --color-primary: #166534;
+  --color-primary-light: #22c55e;
+  --color-accent: #EA580C;
+  --color-accent-light: #fb923c;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  --color-border: #E5E7EB;
+}
+
+/* SF Pro System Font Stack */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities */
+@utility container-padding {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
